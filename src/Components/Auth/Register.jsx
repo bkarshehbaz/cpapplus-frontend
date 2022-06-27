@@ -1,0 +1,199 @@
+import React, { Component, useState, useEffect } from "react";
+import "./Auth.css";
+import { Link, useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { registerUser } from "../../redux/actions/authActions";
+import classnames from "classnames";
+
+const Register = ({ auth, registerUser, errors }) => {
+  let send = useNavigate();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
+
+  useEffect(() => {
+    if (auth && auth.isAuthenticated) {
+      send("/dashboard");
+    }
+    if (auth && auth.user && auth.user.email) {
+      send("/login");
+    }
+  });
+  console.log(auth);
+  const registerSubmit = (e) => {
+    e.preventDefault();
+    const newUser = {
+      name: name,
+      email: email,
+      password: password,
+      password2: password,
+    };
+    registerUser(newUser);
+  };
+  return (
+    <section className="register">
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-12 col-md-12 col-12">
+            <div className="signup-right">
+              <form className="AuthForm">
+                <img className="form-logo" src="./logo.PNG" alt="" />
+                <h1>Signup</h1>
+
+                <div style={{ marginTop: "10px" }} class="form-row">
+                  <div class="form-group col-md-12">
+                    <label htmlFor="name">Name</label> <br />
+                    <input
+                      type="text"
+                      className="input-control"
+                      placeholder="Enter your name"
+                      id="name"
+                      value={name}
+                      onChange={(e) => {
+                        setName(e.target.value);
+                      }}
+                    />{" "}
+                    <br />
+                    <span className="text-danger">
+                      {errors && errors.name ? errors.name : null}
+                    </span>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <label htmlFor="Email">Email</label> <br />
+                    <input
+                      type="email"
+                      className="input-control"
+                      placeholder="Enter your email"
+                      id="email"
+                      value={email}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                      }}
+                    />{" "}
+                    <br />
+                    <span className="text-danger">
+                      {errors && errors.email ? errors.email : null}
+                    </span>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <label htmlFor="Password">Password</label> <br />
+                    <input
+                      type="password"
+                      className="input-control"
+                      placeholder="Enter your password"
+                      id="password"
+                      value={password}
+                      onChange={(e) => {
+                        setPassword(e.target.value);
+                      }}
+                    />{" "}
+                    <br />
+                    <span className="text-danger">
+                      {errors && errors.password ? errors.password : null}
+                    </span>
+                  </div>
+                </div>
+
+                <div style={{ marginTop: "30px" }} className=" form-btns">
+                  <button
+                    type="submit"
+                    onClick={registerSubmit}
+                    className="bottom-btn right"
+                  >
+                    Register
+                  </button>
+                  <p className="form-bottom-text">
+                    Already have an acccount? click{" "}
+                    <span
+                      onClick={() => {
+                        send("/login");
+                      }}
+                    >
+                      here
+                    </span>{" "}
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+Register.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
+};
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  errors: state.errors,
+});
+export default connect(mapStateToProps, { registerUser })(Register);
+
+// class Register extends Component {
+//   constructor() {
+//     super();
+//     this.state = {
+//       name: "",
+//       email: "",
+//       password: "",
+//       password2: "",
+//       errors: {},
+//     };
+//   }
+//   componentDidMount() {
+//     // If logged in and user navigates to Register page, should redirect them to dashboard
+//     if (this.props.auth.isAuthenticated) {
+//       // Send("/dashboard");
+//     }
+//   }
+
+//   componentWillReceiveProps(nextProps) {
+//     if (nextProps.errors) {
+//       this.setState({
+//         errors: nextProps.errors,
+//       });
+//     }
+//   }
+
+//   onChangeRegister = (e) => {
+//     this.setState({ [e.target.id]: e.target.value });
+//   };
+//   registerSubmit = (e) => {
+//     e.preventDefault();
+//     const newUser = {
+//       name: this.state.name,
+//       email: this.state.email,
+//       password: this.state.password,
+//       password2: this.state.password2,
+//     };
+//     this.props.registerUser(newUser, this.props.history);
+//   };
+
+//   render() {
+
+//     return (
+
+//     );
+//   }
+// }
+// Register.propTypes = {
+//   registerUser: PropTypes.func.isRequired,
+
+//   auth: PropTypes.object.isRequired,
+//   errors: PropTypes.object.isRequired,
+// };
+// const mapStateToProps = (state) => ({
+//   auth: state.auth,
+//   errors: state.errors,
+// });
+// export default connect(mapStateToProps, { registerUser })(Register);
