@@ -53,6 +53,9 @@ const Login = ({ auth, registerUser, errors, loginUser }) => {
                     <br />
                     <span className="text-danger">
                       {errors && errors.email ? errors.email : null}
+                      {errors && errors.emailNotFound
+                        ? errors.emailNotFound
+                        : null}
                     </span>
                   </div>
                 </div>
