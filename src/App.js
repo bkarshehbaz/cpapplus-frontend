@@ -23,6 +23,7 @@ import Testing from "./Components/SensorBlocks/testing";
 import Profile from "./Components/Auth/ChangePassword";
 import Emails from "./emails";
 import Sensors from "./Sensors";
+
 // Lessions
 import DialogeBox from "./dialogeBox";
 function App() {

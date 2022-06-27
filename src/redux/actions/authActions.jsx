@@ -3,6 +3,7 @@ import axios from "axios";
 import setAuthToken from "../../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 import { Link, useNavigate, Navigate } from "react-router-dom";
+import { URL } from "../../utils.js";
 import {
   GET_ERRORS,
   SET_SUCCESS,
@@ -17,7 +18,7 @@ export const registerUser = (userData) => (dispatch) => {
     payload: "",
   });
   axios
-    .post("/api/users/register", userData)
+    .post(URL + "api/users/register", userData)
     .then((res) => {
       dispatch({
         type: ADD_USER,
@@ -39,7 +40,7 @@ export const updatePassword = (userData) => (dispatch) => {
     payload: "",
   });
   axios
-    .post("/api/users/changePassword", userData)
+    .post(URL + "api/users/changePassword", userData)
     .then((res) => {
       dispatch({
         type: SET_SUCCESS,
@@ -61,7 +62,7 @@ export const loginUser = (userData) => (dispatch) => {
     payload: "",
   });
   axios
-    .post("/api/users/login", userData)
+    .post(URL + "api/users/login", userData)
     .then((res) => {
       // Save to localStorage// Set token to localStorage
       const { token } = res.data;
@@ -73,12 +74,13 @@ export const loginUser = (userData) => (dispatch) => {
       // Set current user
       dispatch(setCurrentUser(decoded));
     })
-    .catch((err) =>
+    .catch((err) => {
+      console.log(err);
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data,
-      })
-    );
+      });
+    });
 }; // Set logged in user
 export const setCurrentUser = (decoded) => {
   return {
