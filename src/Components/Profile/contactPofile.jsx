@@ -71,7 +71,7 @@ const ContactPofile = ({ UpdateProfile, auth, GetProfile, profile }) => {
   };
 
   return (
-    <form className="AuthForm profile-form col-12 col-md-6 col-lg-7">
+    <form className="AuthForm profile-form col-12 col-md-6 col-lg-12">
       <h1>Profile</h1>
 
       <div class="form-row">
