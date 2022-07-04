@@ -81,7 +81,14 @@ const Login = ({ auth, registerUser, errors, loginUser }) => {
                     </span>
                   </div>
                 </div>
-
+                <p
+                  onClick={() => {
+                    send("/forget-password");
+                  }}
+                  className="forget-password"
+                >
+                  Forget Password?
+                </p>
                 <div style={{ marginTop: "30px" }} className=" form-btns">
                   <button
                     type="submit"

@@ -38,6 +38,8 @@ import DialogueBox from "./Components/SensorBlocks/DialogueBox";
 
 import BlockWrapper from "./Components/SensorBlocks/BlockWrapper";
 
+import ContactProfile from "./Components/Profile/contactPofile";
+
 export const Dialogue = ({ auth, logoutUser }) => {
   let send = useNavigate();
   const [sidebar, SetSidebar] = useState(true);
@@ -116,7 +118,7 @@ export const Dialogue = ({ auth, logoutUser }) => {
         </div>
       </nav>
       {/* Page Content  */}
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg ">
         <div className="container-fluid">
           {/* <button
           type="button"
@@ -127,6 +129,15 @@ export const Dialogue = ({ auth, logoutUser }) => {
           <i className="fa fa-bars" />
           <span className="sr-only">Toggle Menu</span>
         </button> */}
+
+          <div
+            className="cursor-pointer"
+            onClick={() => {
+              send("/dashboard");
+            }}
+          >
+            <img src="logoWhite.png" className="logo-navbar" alt="" />
+          </div>
           <button
             className="btn btn-dark d-inline-block d-lg-none ml-auto"
             type="button"
@@ -172,77 +183,27 @@ export const Dialogue = ({ auth, logoutUser }) => {
           <DialogeBoxComponent key="adsf" sensorData={sensorData} />
         ) : null} */}
 
-        <h2 className="mb-4">Dashboard</h2>
+        <h2 className="mb-4">
+          Hello, {auth && auth.user && auth.user.name ? auth.user.name : null}
+        </h2>
 
         <div className="row blocks-row">
-          <div class="col-xl-3 col-md-6 mb-4">
+          <div class="col-lg-7 col-md-6 col-12">
             <div class="card border-left-primary shadow h-100 py-2">
               <div class="card-body">
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                      Important Title
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1 next-event-heading">
+                      Next Event:
                     </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">
-                      34,5646
-                    </div>
-                  </div>
-                  <div class="col-auto">
-                    {/* <i class="fas fa-calendar fa-2x text-gray-300"></i> */}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-              <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                  <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                      Important Title
-                    </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">
-                      34,5646
-                    </div>
-                  </div>
-                  <div class="col-auto">
-                    {/* <i class="fas fa-calendar fa-2x text-gray-300"></i> */}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-              <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                  <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                      Important Title
-                    </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">
-                      34,5646
-                    </div>
-                  </div>
-                  <div class="col-auto">
-                    {/* <i class="fas fa-calendar fa-2x text-gray-300"></i> */}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-              <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                  <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                      Important Title
-                    </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">
-                      34,5646
-                    </div>
+                    <ul>
+                      <li>
+                        July 17th, 2022, 02:00 PM - Appointment with Dr. Bkar at
+                        45 Street, New York, NY
+                      </li>
+                      <li>July 21st, 2022, Filter resupply shipment</li>
+                      <li>August 05th, Mask resupply shipment</li>
+                    </ul>
                   </div>
                   <div class="col-auto">
                     {/* <i class="fas fa-calendar fa-2x text-gray-300"></i> */}
@@ -253,91 +214,9 @@ export const Dialogue = ({ auth, logoutUser }) => {
           </div>
         </div>
 
-        <div className="row blocks-row ">
-          <div className="table-responsive-lg">
-            <table class="table ">
-              <thead>
-                <tr>
-                  <th scope="col">Name</th>
-                  <th scope="col">Date</th>
-                  <th scope="col">Time</th>
-                  <th scope="col">Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="bg-blue">
-                  <td class="pt-2">
-                    <img
-                      src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                      class="rounded-circle"
-                      alt=""
-                    />
-                    <div class="pl-lg-5 pl-md-3 pl-1 name">Emilia Kollette</div>
-                  </td>
-                  <td class="pt-3 mt-1">25 Sep 2020</td>
-                  <td class="pt-3">11:00 AM</td>
-                  <td class="pt-3">
-                    <span class="fa fa-check pl-3"></span>
-                  </td>
-                </tr>
-                <tr className="spacing-row">
-                  <td></td>
-                </tr>
-                <tr class="bg-blue">
-                  <td class="pt-2">
-                    <img
-                      src="https://images.pexels.com/photos/3765114/pexels-photo-3765114.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                      class="rounded-circle"
-                      alt=""
-                    />
-                    <div class="pl-lg-5 pl-md-3 pl-1 name">Anny Adams</div>
-                  </td>
-                  <td class="pt-3">26 Sep 2020</td>
-                  <td class="pt-3">11:00 AM</td>
-                  <td class="pt-3">
-                    <span class="fa fa-check pl-3"></span>
-                  </td>
-                </tr>
-                <tr className="spacing-row">
-                  <td></td>
-                </tr>
-                <tr class="bg-blue">
-                  <td class="pt-2">
-                    <img
-                      src="https://images.pexels.com/photos/3779448/pexels-photo-3779448.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                      class="rounded-circle"
-                      alt=""
-                    />
-                    <div class="pl-lg-5 pl-md-3 pl-1 name">Arnold Linn</div>
-                  </td>
-                  <td class="pt-3">26 Sep 2020</td>
-                  <td class="pt-3">02:00 PM</td>
-                  <td class="pt-3">
-                    <span class="fa fa-check pl-3"></span>
-                  </td>
-                </tr>
-                <tr className="spacing-row">
-                  <td></td>
-                </tr>
-                <tr class="bg-blue">
-                  <td class="pt-2">
-                    <img
-                      src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                      class="rounded-circle"
-                      alt=""
-                    />
-                    <div class="pl-lg-5 pl-md-3 pl-1 name">Josh Limosel</div>
-                  </td>
-                  <td class="pt-3">26 Sep 2020</td>
-                  <td class="pt-3">04:00 PM</td>
-                  <td class="pt-3">
-                    <span class="fa fa-minus pl-3"></span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+        {/* Below blocks starts here  */}
+
+        <ContactProfile />
       </div>
     </div>
   );

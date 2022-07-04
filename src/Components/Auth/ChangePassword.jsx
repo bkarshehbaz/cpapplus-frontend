@@ -100,8 +100,26 @@ const ChangePassword = ({ auth, updatePassword, errors, logoutUser }) => {
         </div>
       </nav>
       {/* Page Content  */}
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg ">
         <div className="container-fluid">
+          {/* <button
+          type="button"
+          id="sidebarCollapse"
+          onclick={onclick}
+          className="btn btn-primary"
+        >
+          <i className="fa fa-bars" />
+          <span className="sr-only">Toggle Menu</span>
+        </button> */}
+
+          <div
+            className="cursor-pointer"
+            onClick={() => {
+              send("/dashboard");
+            }}
+          >
+            <img src="logoWhite.png" className="logo-navbar" alt="" />
+          </div>
           <button
             className="btn btn-dark d-inline-block d-lg-none ml-auto"
             type="button"
@@ -117,7 +135,7 @@ const ChangePassword = ({ auth, updatePassword, errors, logoutUser }) => {
             <ul className="nav navbar-nav ml-auto">
               <li
                 onClick={() => {
-                  this.props.history.push("/profile");
+                  send("/profile");
                 }}
                 className="nav-item"
               >
@@ -131,10 +149,13 @@ const ChangePassword = ({ auth, updatePassword, errors, logoutUser }) => {
                 }}
                 className="nav-item"
               >
-                <a href="" className="nav-link">
+                <a className="nav-link" href="">
                   <img className="link-icon icon" src={logout} />
                 </a>
               </li>
+              {/* <li>
+                <button >Logout</button>
+              </li> */}
             </ul>
           </div>
         </div>

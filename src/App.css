@@ -10,6 +10,7 @@ html{
   .navbar {
     position: absolute;
     width: 100vw;
+    background-color: #a87fda;
   }
   #sidebar{
     z-index: 100;
@@ -584,4 +585,48 @@ thead{
   color: #fff;
   background-color: transparent;
   border-color: transparent;
+}
+
+#sidebar{
+  display: none !important;
+}
+
+.logo-navbar{
+  width: 160px;
+}
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.profile-form{
+  /* width: 30%; */
+  padding: 0px;
+}
+
+.navbar {
+  padding: 5px 10px;
+}
+
+
+.custom-dropdown{
+  width: 100%;
+  padding: 5px;
+  outline: none !important;
+  border: none;
+  border: 1px solid #5052503d;
+}
+.btn-small-purple{
+  padding: 5px ;
+  width: 100px;
+  background-color: #6f008f;
+  color: white;
+}
+.next-event-heading{
+  font-size: 20px;
+}
+
+.forget-password{
+  color: black;
+  font-weight: 500;
+  cursor: pointer;
 }

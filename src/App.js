@@ -19,6 +19,8 @@ import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./redux/actions/authActions";
 import PrivateRoute from "./Components/private-route/PrivateRoute";
 import Dashboard from "./Components/Dashboard/Dashboard";
+import ForgetPassword from "./Components/Auth/ForgetPassword";
+import ResetPassword from "./Components/Auth/ResetPassword";
 import Testing from "./Components/SensorBlocks/testing";
 import Profile from "./Components/Auth/ChangePassword";
 import Emails from "./emails";
@@ -69,6 +71,9 @@ function App() {
             path="/profile"
             element={<PrivateRoute component={Profile} />}
           />
+
+          <Route exact path="/forget-password" element={<ForgetPassword />} />
+          <Route exact path="/reset-password" element={<ResetPassword />} />
           {/* <PrivateRoute exact path="/testing" component={Testing} /> */}
           {/* <PrivateRoute exact path="/receivers" component={Emails} /> */}
         </Routes>

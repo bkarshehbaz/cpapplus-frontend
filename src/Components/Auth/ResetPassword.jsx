@@ -15,16 +15,32 @@ export const ForgetPassword = (props) => {
             <div className="signup-right">
               <form className="AuthForm">
                 <img className="form-logo" src="./logo.PNG" alt="" />
-                <h1>Forget Password</h1>
+                <h1>Reset Password</h1>
 
                 <div class="form-row">
                   <div class="form-group col-md-12">
-                    <label htmlFor="Email">Email</label> <br />
+                    <label htmlFor="Email">Password</label> <br />
                     <input
-                      type="email"
+                      type="password"
                       className="input-control"
-                      placeholder="Enter your email"
-                      id="email"
+                      placeholder="Enter your new password"
+                      id="password"
+                      // value={email}
+                      // onChange={(e) => {
+                      //   setEmail(e.target.value);
+                      // }}
+                    />{" "}
+                    <br />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <label htmlFor="Email">Re-enter Password</label> <br />
+                    <input
+                      type="password"
+                      className="input-control"
+                      placeholder="Enter your new password again"
+                      id="password"
                       // value={email}
                       // onChange={(e) => {
                       //   setEmail(e.target.value);
@@ -40,7 +56,7 @@ export const ForgetPassword = (props) => {
                     // onClick={LOGINUser}
                     className="bottom-btn right"
                   >
-                    Send Email
+                    Reset
                   </button>
                   <p className="form-bottom-text">
                     Don't have an acccount? click{" "}
