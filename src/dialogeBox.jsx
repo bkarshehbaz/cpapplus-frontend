@@ -7,7 +7,7 @@ import { FaGithub } from "react-icons/fa";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "./redux/actions/authActions";
-
+import FourBlocks from "./Components/DashboardBlocks/fourBlocks";
 import TopBlock from "./Components/SensorBlocks/TopBlock";
 import logo from "./assets/images/logo.png";
 import dashboard from "./assets/images/dashboard.png";
@@ -43,6 +43,9 @@ import ContactProfile from "./Components/Profile/contactPofile";
 export const Dialogue = ({ auth, logoutUser }) => {
   let send = useNavigate();
   const [sidebar, SetSidebar] = useState(true);
+
+  const [machineImage, SetMachineImage] = useState("");
+  const [maskImage, SetMaskImage] = useState("");
   const ToggleSidebar = () => {
     if (sidebar === true) {
       document.getElementById("sidebar").style.marginLeft = "0px";
@@ -52,6 +55,15 @@ export const Dialogue = ({ auth, logoutUser }) => {
     SetSidebar(!sidebar);
   };
 
+  const mahcineSelected = (data) => {
+    console.log("machine", data);
+    SetMachineImage(data);
+  };
+
+  const maskSelected = (data) => {
+    console.log("mask", data);
+    SetMaskImage(data);
+  };
   return (
     <div className="wrapper d-flex align-items-stretch">
       <nav id="sidebar">
@@ -188,7 +200,7 @@ export const Dialogue = ({ auth, logoutUser }) => {
         </h2>
 
         <div className="row blocks-row">
-          <div class="col-lg-12 col-md-6 col-12">
+          <div class="col-lg-6 col-md-6 col-12">
             <div class="card border-left-primary shadow h-100 py-2">
               <div class="card-body">
                 <div class="row no-gutters align-items-center">
@@ -212,11 +224,48 @@ export const Dialogue = ({ auth, logoutUser }) => {
               </div>
             </div>
           </div>
+          <div class="col-lg-3 col-md-3 col-12">
+            <div class="card border-left-primary shadow h-100 py-2">
+              <div class="card-body">
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1 next-event-heading">
+                  Selected Machine :
+                </div>
+                <div class="row no-gutters align-items-center images-container">
+                  <img
+                    src={machineImage + ".jpg"}
+                    className="top-block-images machine"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-12">
+            <div class="card border-left-primary shadow h-100 py-2">
+              <div class="card-body">
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1 next-event-heading">
+                  Selected Mask:
+                </div>
+                <div class="row no-gutters align-items-center images-container">
+                  <img
+                    src={maskImage + ".jpg"}
+                    className="top-block-images machine"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Below blocks starts here  */}
-
-        <ContactProfile />
+        <div className="row form-blocks-flex">
+          <ContactProfile
+            mahcineSelected={mahcineSelected}
+            maskSelected={maskSelected}
+          />
+          <FourBlocks />
+        </div>
       </div>
     </div>
   );
